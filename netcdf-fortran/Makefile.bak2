@@ -1,0 +1,15 @@
+	SHELL	=	/bin/sh
+	EXEC	=	exename
+	FC	=	ifort
+	NETCDFLIB	=/home/huwanpeng/opt/netcdf-fortran-intel
+	HDF5LIB		=/home/huwanpeng/opt/hdf5-intel
+
+
+all:	ion
+ion:
+	$(FC) $(CFLAGS) main.f90 -o $(EXEC) $(objects) -I$(NETCDFLIB)/include -L$(NETCDFLIB)/lib -lnetcdff
+
+clean:
+	rm *.o $(EXEC)	
+clean-data:
+	rm -f *.txt *.dat errfile outfile
